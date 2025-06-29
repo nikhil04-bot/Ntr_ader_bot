@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NTRADE AI SIGNAL BOT</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NTRADE AI BOT 🧠📈</h1>
+        {% if signal %}
+            <div class="signal-box {{ 'call' if signal.signal == 'CALL' else 'put' }}">
+                <h2>Signal: {{ signal.signal }}</h2>
+                <p><strong>Entry:</strong> ₹{{ signal.entry }}</p>
+                <p><strong>Stop Loss:</strong> ₹{{ signal.sl }}</p>
+                <p><strong>Target:</strong> ₹{{ signal.target }}</p>
+                <p><strong>Reason:</strong> {{ signal.reason }}</p>
+            </div>
+        {% else %}
+            <p class="nosignal">No signal detected at the moment.</p>
+        {% endif %}
+
+        <iframe src="https://www.tradingview.com/embed-widget/mini-symbol-overview/?symbol=NSE:BANKNIFTY&interval=5&theme=dark"
+            width="100%" height="300" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+</body>
+</html>
